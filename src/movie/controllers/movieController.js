@@ -49,7 +49,12 @@ class MovieController {
       return res.json({
         status: RESPONSE_STATUS.success,
         message: RESPONSE_MESSAGE.success,
-        data: data,
+        data: {
+          items: data.rows,
+          page: req.query.page || 1,
+          size: req.query.size || data.count,
+          total: data.count,
+        },
       });
     } catch (e) {
       next(e);

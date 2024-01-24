@@ -12,7 +12,7 @@ class movieService {
 
   getAllMovie = async (payload) => {
     const filter = this.buildFilter(payload);
-    const data = await this.movieModel.findAll(filter);
+    const data = await this.movieModel.findAndCountAll(filter);
     return data;
   };
 
